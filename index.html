@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📤 Enviar RQ a Direccion Financiera</title>
+    <!-- Modern Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- External Styles -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <main class="card">
+        <header class="header">
+            <h1>📤 Enviar RQ a Dirección Financiera</h1>
+            <p>Complete el formulario para enviar el requerimiento oficial</p>
+        </header>
+
+        <section class="form" id="rqForm">
+            <div id="status" class="status" aria-live="polite"></div>
+
+            <div class="form-group">
+                <label for="sheetUrl">🔗 URL del Google Sheet del RQ <span class="required">*</span></label>
+                <input type="url" id="sheetUrl" placeholder="https://docs.google.com/spreadsheets/d/..." required>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="sheetName">📑 Nombre de la pestaña <span class="required">*</span></label>
+                    <input type="text" id="sheetName" placeholder="Hoja1" value="Hoja1" required>
+                </div>
+                <div class="form-group">
+                    <label for="emailFinanzas">📧 Correo de Finanzas <span class="required">*</span></label>
+                    <input type="email" id="emailFinanzas" placeholder="finanzas@empresa.com" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="mensaje">📝 Mensaje para Finanzas <span class="required">*</span></label>
+                <textarea id="mensaje" placeholder="Describe el contexto, cambios o razones de este envío..."
+                    maxlength="500" required></textarea>
+                <div class="char-count"><span id="contador">0</span> / 500</div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label>⚡ Prioridad</label>
+                    <div class="priority-group" role="radiogroup" aria-label="Seleccionar prioridad">
+                        <label class="priority-option active" data-priority="normal">
+                            <input type="radio" name="prioridad" value="normal" checked>
+                            <span>🟢 Normal</span>
+                        </label>
+                        <label class="priority-option" data-priority="alta">
+                            <input type="radio" name="prioridad" value="alta">
+                            <span>🟡 Alta</span>
+                        </label>
+                        <label class="priority-option" data-priority="urgente">
+                            <input type="radio" name="prioridad" value="superAlta">
+                            <span>🔴 Super Alta</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tipoEnvio">📎 Tipo de Envío</label>
+                    <select id="tipoEnvio">
+                        <option value="nuevo">🆕 Nuevo requerimiento</option>
+                        <option value="reenvio">🔄 Reenvío / Actualización</option>
+                        <option value="urgente">⚡ Aprobación Prioritaria</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="lineas">📊 Líneas presupuestales a aprobar (opcional)</label>
+                <input type="text" id="lineas" placeholder="Ej: 1, 3, 5 (dejar vacío para todas)">
+            </div>
+
+            <button type="submit" class="btn" id="btnEnviar">
+                <span class="spinner" id="spinner"></span>
+                <span id="btnText">📨 Enviar Correo</span>
+            </button>
+        </section>
+    </main>
+
+    <!-- External Logic -->
+    <script src="scripts.js"></script>
+</body>
+
+</html>
